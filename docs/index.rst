@@ -66,7 +66,10 @@ This decorator will use request.path by default for the cache_key::
 
 The cached decorator has another optional argument called ``unless``. This
 argument accepts a callable that returns True or False. If ``unless`` returns
-``True`` then it will bypass the caching mechanism entirely.
+``True`` then it will bypass the caching mechanism entirely. If the view 
+function's return value was based on query string parameters, you can set 
+``query_string`` argument to ``True``, then the cache key used will be the 
+result of hashing the ordered query string parameters.
 
 .. warning::
 

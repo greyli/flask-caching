@@ -17,6 +17,14 @@ def current_time():
     return str(datetime.now())
 
 
+#: This is an example of a cached view with query parameters
+@app.route('/api/posts')
+@cache.cached(50, query_string=True)
+def posts():
+    page = request.args.get('page', 1)
+    return 'posts in page' + str(page)
+
+
 #: This is an example of a cached function
 @cache.cached(key_prefix='binary')
 def random_binary():
